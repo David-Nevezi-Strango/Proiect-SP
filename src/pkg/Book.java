@@ -2,43 +2,30 @@ package pkg;
 
 import java.util.ArrayList;
 
-public class Book {
-	String title;
-	Author author;
-	ArrayList<Chapter> chapters;
-	TableOfContents tableOfContents;
+public class Book extends Section{
+	ArrayList<Author> authors;
+	ArrayList<Element> contents;
 	
 	public Book(String title) {
-		this.title = title;
-		this.chapters = new ArrayList<Chapter>();
+		super(title);
+		this.authors = new ArrayList<Author>();
+		this.contents = new ArrayList<Element>();
 	}
 
 	public void print() {
-		System.out.println("Book: " + this.title);
-		this.chapters.forEach(Chapter::print);
-	}
-
-	public void setTableOfContents(TableOfContents tableOfContents) {
-		this.tableOfContents = tableOfContents;
-	}
-
-	public int createChapter(String chapterTitle) {
-		Chapter chapter = new Chapter(chapterTitle);
-		this.chapters.add(chapter);
-		return chapters.indexOf(chapter);
-	}
-	
-
-	public Chapter getChapter(int indexChapter) {
-		return chapters.get(indexChapter);
-	}
-	
-	public void addTableOfContents(TableOfContents tableOfContents) {
-		this.tableOfContents = tableOfContents;
+		System.out.println("Book: " + this.title +"\n\n" + "Authors:");
+		this.authors.forEach(Author::print);
+		System.out.println();
+		this.contents.forEach(Element::print);
 	}
 
 	public void addAuthor(Author author) {
-		this.author = author;
+		this.authors.add(author);
+		
+	}
+
+	public void addContent(Element element) {
+		this.contents.add(element);
 		
 	}
 

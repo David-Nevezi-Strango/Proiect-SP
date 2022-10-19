@@ -1,42 +1,50 @@
-package pkg;
+package old;
 
 import java.util.ArrayList;
 
+import pkg.Element;
+import pkg.Image;
+import pkg.Paragraph;
+import pkg.Table;
+
 public class SubChapter {
 	String name;
-	ArrayList<Paragraph> paragraphs;
+	ArrayList<Element> elements;
+	/*ArrayList<Paragraph> paragraphs;
 	ArrayList<Image> images;
-	ArrayList<Table> tables;
+	ArrayList<Table> tables;*/
 
 	public SubChapter(String name) {
 		this.name = name;
-		paragraphs = new ArrayList<Paragraph>();
+		elements = new ArrayList<Element>();
+		/*paragraphs = new ArrayList<Paragraph>();
 		images = new ArrayList<Image>();
-		tables = new ArrayList<Table>();
+		tables = new ArrayList<Table>();*/
 	}
 	
 	public void print() {
 		System.out.println("SubChapter: " + this.name);
-		paragraphs.forEach(Paragraph::print);
+		elements.forEach(Element::print);
+		/*paragraphs.forEach(Paragraph::print);
 		images.forEach(Image::print);
-		tables.forEach(Table::print);
+		tables.forEach(Table::print);*/
 	}
 
 	public void createNewParagraphs(String titleParagraph) {
 		Paragraph paragraph = new Paragraph(titleParagraph);
-		this.paragraphs.add(paragraph);
+		this.elements.add(paragraph);
 		//return chapters.indexOf(chapter);
 	}
 
 	public void createNewImages(String titleImage) {
 		Image image = new Image(titleImage);
-		this.images.add(image);
+		this.elements.add(image);
 		
 	}
 
 	public void createNewTables(String titleTable) {
 		Table table = new Table(titleTable);
-		this.tables.add(table);
+		this.elements.add(table);
 		
 	}
 }

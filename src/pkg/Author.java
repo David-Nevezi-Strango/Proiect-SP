@@ -2,6 +2,7 @@ package pkg;
 
 public class Author {
 	String name;
+	String surname;
 
 	public Author(String name) {
 		this.name = name;
