@@ -22,19 +22,19 @@ public class ImageProxy implements Element, Picture {
 	}
 	
 	@Override
-	 String url() {
+	public String url() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	 Dimension dim() {
+	public Dimension dim() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	 PictureContent content() {
+	public PictureContent content() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -62,6 +62,12 @@ public class ImageProxy implements Element, Picture {
 	public Element get(int index) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitImageProxy(this);
+		
 	}
 
 }

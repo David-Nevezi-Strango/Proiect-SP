@@ -3,9 +3,9 @@ package pkg;
 import java.awt.Dimension;
 
 public interface Picture {
-	String url();
+	public String url();
 	
-	Dimension dim();
+	public Dimension dim();
 	
-	PictureContent content();
+	public PictureContent content();
 }

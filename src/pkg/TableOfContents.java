@@ -25,5 +25,10 @@ public class TableOfContents implements Element{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitTableOfContents(this);
+	}
 	
 }
