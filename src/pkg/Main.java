@@ -1,8 +1,18 @@
 package pkg;
 
-public class Main {
 
+
+public class Main {
+	
+	public static void Printing() {
+		DocumentManager.getInstance().getBook().print();
+	}
+	
 	public static void main(String[] args) {
+		Book myBook = new Book("My Book");
+		DocumentManager.getInstance().setBook(myBook);
+		Author me = new Author("My Self");
+		myBook.addAuthor(me);
 		Section cap1 = new Section("Capitolul 1");
 		Paragraph p1 = new Paragraph("Paragraph 1");
 		cap1.add(p1);
@@ -34,12 +44,19 @@ public class Main {
 		cap111.add(new Paragraph("Text from subchapter 1.1.1"));
 		cap111.add(cap1111);
 		cap1111.add(new Image("Image subchapter 1.1.1.1"));
+
+		myBook.addContent(cap1);
+		myBook.addContent(cap11);
+		myBook.addContent(cap111);
+		myBook.addContent(cap1111);
 		
 		
 		TableOfContents toc = new TableOfContents();
 		ContentVisitor visitor = new ContentVisitor(toc);
 		cap1.accept(visitor);
-		toc.print();
+		//toc.print();
+		
+		Printing();
 		
 	}
 
