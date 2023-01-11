@@ -1,25 +1,36 @@
 package pkg;
 
-public class ContentVisitor implements Visitor{
-	int contentNumber;
+public class CreateTOC implements Visitor{
 	TableOfContents toc;
 	
 	
-	public ContentVisitor(TableOfContents toc) {
-		this.contentNumber = 0;
+	public CreateTOC() {
+		this.toc = new TableOfContents();
+	}
+	
+	
+
+	public TableOfContents getTOC() {
+		return toc;
+	}
+
+
+
+	public void setTOC(TableOfContents toc) {
 		this.toc = toc;
 	}
 
+
+
 	@Override
 	public void visitBook(Book book) {
-		// TODO Auto-generated method stub
+		this.toc.addEntry(book.title);
 		
 	}
 
 	@Override
 	public void visitSection(Section section) {
-		this.contentNumber++;
-		toc.addEntry(section.title + "........" + this.contentNumber);
+		this.toc.addEntry(section.title);
 		
 	}
 
@@ -31,31 +42,29 @@ public class ContentVisitor implements Visitor{
 
 	@Override
 	public void visitParagraph(Paragraph paragraph) {
-		this.contentNumber++;
-		
+		this.toc.addEntry(paragraph.text);
 		
 	}
 
 	@Override
 	public void visitImageProxy(ImageProxy imageProxy) {
-		// TODO Auto-generated method stub
+		this.toc.addEntry(imageProxy.url);
 		
 	}
 
 	@Override
 	public void visitImage(Image image) {
-		this.contentNumber++;
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void visitTable(Table table) {
-		this.contentNumber++;
+		this.toc.addEntry(table.title);
 		
 	}
 
-	public TableOfContents getTOC() {
-		return this.toc;
+	public void print() {
+		this.toc.print();
 	}
-
 }

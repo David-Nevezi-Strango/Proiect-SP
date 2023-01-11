@@ -2,11 +2,13 @@ package pkg;
 
 
 
+
 public class Main {
 	
 	public static void Printing() {
-		DocumentManager.getInstance().getBook().print();
+		DocumentManager.getInstance().getBook().getTOC().print();
 	}
+	
 	
 	public static void main(String[] args) {
 		Book myBook = new Book("My Book");
@@ -55,6 +57,20 @@ public class Main {
 		ContentVisitor visitor = new ContentVisitor(toc);
 		cap1.accept(visitor);
 		//toc.print();
+		
+		CreateTOC v = new CreateTOC();
+		myBook.accept(v);
+		myBook.setTOC(v.getTOC());
+
+		Printing();
+		System.out.println("\n\n");
+		
+		UpdateTOC o = new UpdateTOC(myBook);
+		myBook.registerObservers(o);
+		cap1111.add(new Paragraph("Motto 2"));
+		Section cap2 = new Section("Capitolul 2");
+		myBook.addContent(cap2);
+		myBook.notifyObservers();
 		
 		Printing();
 		
